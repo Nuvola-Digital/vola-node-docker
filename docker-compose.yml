@@ -1,0 +1,22 @@
+services:
+  vola-private-testnet-node:
+    image: volanetwork/vola-node
+    entrypoint: ["/run-private-testnet-node.sh"]
+    volumes:
+      - vola_data:/data
+      - ./run-private-testnet-node.sh:/run-private-testnet-node.sh
+    ports:
+      - "${PORT}:${PORT}"
+      - "${RPC_PORT}:${RPC_PORT}"
+    environment:
+      NODE_NAME: "${NODE_NAME}"
+      AURA_SURI: "${AURA_SURI}"
+      GRAN_SURI: "${GRAN_SURI}"
+      NODE_KEY: "${NODE_KEY}"
+      KEYSTORE_PASSWORD: "${KEYSTORE_PASSWORD}"
+      PORT: "${PORT}"
+      RPC_PORT: "${RPC_PORT}"
+
+volumes:
+  vola_data:
+    name: vola_private_testnet_data
