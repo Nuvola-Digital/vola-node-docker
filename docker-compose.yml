@@ -1,13 +1,30 @@
 services:
+  openvpn-client:
+    image: dperson/openvpn-client
+    container_name: openvpn-client
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - /dev/net:/dev/net:z
+      - ${OPENVPN_CONFIG_FILE}:/vpn/vpn.ovpn
+      - ${OPENVPN_PASSWORD_FILE}:/vpn/vpn.pwd
+    environment:
+      VPN_FILES: "vpn.ovpn"
+      OTHER_ARGS: "--askpass /vpn/vpn.pwd"
+    ports:
+      # Define ports for forwading to vola private testnet node.
+      - "${PORT}:${PORT}"
+      - "${RPC_PORT}:${RPC_PORT}"
+    restart: unless-stopped
+    networks:
+      - vola_private_network
+
   vola-private-testnet-node:
-    image: volanetwork/vola-node
+    image: ngittech/vola-node
     entrypoint: ["/run-private-testnet-node.sh"]
     volumes:
       - vola_data:/data
       - ./run-private-testnet-node.sh:/run-private-testnet-node.sh
-    ports:
-      - "${PORT}:${PORT}"
-      - "${RPC_PORT}:${RPC_PORT}"
     environment:
       NODE_NAME: "${NODE_NAME}"
       AURA_SURI: "${AURA_SURI}"
@@ -16,7 +33,14 @@ services:
       KEYSTORE_PASSWORD: "${KEYSTORE_PASSWORD}"
       PORT: "${PORT}"
       RPC_PORT: "${RPC_PORT}"
+    network_mode: "service:openvpn-client"
+    depends_on:
+      - openvpn-client
 
 volumes:
   vola_data:
     name: vola_private_testnet_data
+
+networks:
+  vola_private_network:
+    driver: bridge
