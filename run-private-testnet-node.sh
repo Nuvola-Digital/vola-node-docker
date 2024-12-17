@@ -13,4 +13,4 @@ echo "Inserting Grandpa key into keystore..."
 # Run the node
 echo "Starting the node..."
 exec /usr/local/bin/vola-node --validator --chain private-testnet --port "$PORT" --rpc-port "$RPC_PORT" \
-    --rpc-methods safe --name "$NODE_NAME" --no-telemetry --no-prometheus --node-key "$NODE_KEY"
+    --rpc-methods safe --name "$NODE_NAME" --node-key "$NODE_KEY" $EXTRA_ARGS

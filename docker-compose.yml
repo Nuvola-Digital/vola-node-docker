@@ -33,6 +33,7 @@ services:
       KEYSTORE_PASSWORD: "${KEYSTORE_PASSWORD}"
       PORT: "${PORT}"
       RPC_PORT: "${RPC_PORT}"
+      EXTRA_ARGS: "${EXTRA_ARGS}"
     network_mode: "service:openvpn-client"
     depends_on:
       - openvpn-client
