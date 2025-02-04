@@ -28,10 +28,6 @@ This repository contains scripts for easy orchestration of the Vola Node.
 
 - **RPC_PORT**: The port number for remote procedure calls (RPC), which is used for interacting with the node (default is 9944).
 
-- **OPENVPN_CONFIG_FILE**: The file path for the OpenVPN configuration file. (Should be provided by vola team.)
-
-- **OPENVPN_PASSWORD_FILE**: The file path for the OpenVPN password file. (Should be provided by vola team.)
-
 Ensure that these variables are properly configured to match your environment and security requirements.
 
 ## Generate SURI and Node Key
