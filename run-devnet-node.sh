@@ -12,5 +12,5 @@ echo "Inserting Grandpa key into keystore..."
 
 # Run the node
 echo "Starting the node..."
-exec /usr/local/bin/vola-node --chain devnet --port "$PORT" --rpc-port "$RPC_PORT" \
+exec /usr/local/bin/vola-node --chain devnet --port "$PORT" --rpc-port "$RPC_PORT" --prometheus-port "$PROMETHEUS_PORT" \
     --name "$NODE_NAME" --node-key "$NODE_KEY" $EXTRA_ARGS

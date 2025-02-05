@@ -28,6 +28,8 @@ This repository contains scripts for easy orchestration of the Vola Node.
 
 - **RPC_PORT**: The port number for remote procedure calls (RPC), which is used for interacting with the node (default is 9944).
 
+- **PROMETHEUS_PORT**: The port number for prometheus exporter (default is 9615).
+
 Ensure that these variables are properly configured to match your environment and security requirements.
 
 ## Generate SURI and Node Key
