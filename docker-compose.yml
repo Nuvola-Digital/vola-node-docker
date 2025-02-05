@@ -7,8 +7,8 @@ services:
       - ./run-devnet-node.sh:/run-devnet-node.sh
     ports:
       - "${PORT}:${PORT}"
-      - "${RPC_PORT}:${RPC_PORT}"
-      - "${PROMETHEUS_PORT}:${PROMETHEUS_PORT}"
+      - "127.0.0.1:${RPC_PORT}:${RPC_PORT}"
+      - "127.0.0.1:${PROMETHEUS_PORT}:${PROMETHEUS_PORT}"
     environment:
       NODE_NAME: "${NODE_NAME}"
       AURA_SURI: "${AURA_SURI}"
