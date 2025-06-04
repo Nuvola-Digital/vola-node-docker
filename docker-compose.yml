@@ -4,7 +4,7 @@ services:
     entrypoint: ["/run-node.sh"]
     volumes:
       - vola_data:/data
-      - ./run-node.sh:/run-node.sh
+      - ./run-node.sh:/run-node.sh:ro
     ports:
       - "${PORT}:${PORT}"
       - "127.0.0.1:${RPC_PORT}:${RPC_PORT}"
