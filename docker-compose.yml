@@ -1,10 +1,10 @@
 services:
-  vola-devnet-node:
+  vola-node:
     image: nuvoladigital/vola-node
-    entrypoint: ["/run-devnet-node.sh"]
+    entrypoint: ["/run-node.sh"]
     volumes:
       - vola_data:/data
-      - ./run-devnet-node.sh:/run-devnet-node.sh
+      - ./run-node.sh:/run-node.sh
     ports:
       - "${PORT}:${PORT}"
       - "127.0.0.1:${RPC_PORT}:${RPC_PORT}"
@@ -18,8 +18,9 @@ services:
       PORT: "${PORT}"
       RPC_PORT: "${RPC_PORT}"
       PROMETHEUS_PORT: "${PROMETHEUS_PORT}"
+      CHAIN: "${CHAIN}"
       EXTRA_ARGS: "${EXTRA_ARGS}"
 
 volumes:
   vola_data:
-    name: vola_devnet_data
+    name: vola_data

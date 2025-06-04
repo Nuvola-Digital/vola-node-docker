@@ -30,6 +30,8 @@ This repository contains scripts for easy orchestration of the Vola Node.
 
 - **PROMETHEUS_PORT**: The port number for prometheus exporter (default is 9615).
 
+- **CHAIN**: The network environment on which to run Node (only "local", "devnet" supported currently).
+
 Ensure that these variables are properly configured to match your environment and security requirements.
 
 ## Generate SURI and Node Key
